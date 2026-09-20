@@ -64,6 +64,35 @@ li {
   margin: 0;
 }
 
+aside .user {
+  max-width: 250px;
+  padding: 12px;
+  border-radius: 4px;
+
+  .name {
+    font-size: 16px;
+  }
+
+  .bio {
+    font-size: 12px;
+    margin: 6px 0;
+  }
+
+  .location {
+    font-size: 10px;
+  }
+}
+
+ul .user {
+  .bio {
+    display: none;
+  }
+
+  .location {
+    text-align: left;
+    color: darkslategray;
+  }
+}
 /*
   Part 1
 
