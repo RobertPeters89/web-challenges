@@ -229,10 +229,6 @@ body {
   color: var(--dark-beige);
 }
 
-.contact-details p:first-child {
-  color: var(--eggshell-white);
-}
-
 /* ==[ MEDIA QUERIES & BREAKPOINTS ]== */
 
 /* Now it's your turn! Use media queries to partially overwrite our
@@ -242,8 +238,63 @@ CSS based on conditions such as viewport width, etc. */
 /* --- */
 /* Replace this comment with your media query. */
 /* --- */
+@media screen and (min-width: 768px) {
+  .card-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap);
+    padding: 0 var(--gap);
+  }
+}
 
+.product-card {
+  width: 100%;
+}
+
+.intro-text {
+  width: 100%;
+  align-self: start;
+}
 /* Media Query Desktop */
 /* --- */
 /* Replace this comment with your media query. */
 /* --- */
+@media screen and (min-width: 1024px) {
+  .card-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap);
+    padding: 0 var(--gap);
+    grid-template-areas:
+      "forest forest"
+      "intro mountain"
+      "river ocean"
+      "desert desert";
+  }
+
+  .--forest {
+    grid-area: forest;
+  }
+
+  .intro-text {
+    grid-area: intro;
+  }
+
+  .--mountain {
+    grid-area: mountain;
+  }
+
+  .--river {
+    grid-area: river;
+  }
+
+  .--ocean {
+    grid-area: ocean;
+  }
+
+  .--desert {
+    grid-area: desert;
+    width: 50%;
+    justify-self: center;
+  }
+}
