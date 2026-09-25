@@ -236,65 +236,52 @@ CSS based on conditions such as viewport width, etc. */
 
 /* Media Query Tablet */
 /* --- */
-/* Replace this comment with your media query. */
-/* --- */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 900px) {
   .card-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--gap);
-    padding: 0 var(--gap);
+
+    /* Adjustments to better match the expected design */
+    padding: 0 20px;
+    align-items: start;
+    gap: var(--gap) calc(var(--gap) * 2);
+    /* End of adjustments */
+
+    .product-card,
+    .intro-text {
+      width: 100%;
+    }
   }
 }
+/* --- */
 
-.product-card {
-  width: 100%;
-}
-
-.intro-text {
-  width: 100%;
-  align-self: start;
-}
 /* Media Query Desktop */
 /* --- */
-/* Replace this comment with your media query. */
-/* --- */
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1200px) {
+  body,
+  .main-header,
+  .navbar {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .card-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--gap);
-    padding: 0 var(--gap);
-    grid-template-areas:
-      "forest forest"
-      "intro mountain"
-      "river ocean"
-      "desert desert";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .product-card,
+  .intro-text {
+    grid-column: span 2;
   }
 
   .--forest {
-    grid-area: forest;
-  }
-
-  .intro-text {
-    grid-area: intro;
-  }
-
-  .--mountain {
-    grid-area: mountain;
-  }
-
-  .--river {
-    grid-area: river;
-  }
-
-  .--ocean {
-    grid-area: ocean;
+    grid-column: 1 / 5;
+    height: 400px;
   }
 
   .--desert {
-    grid-area: desert;
-    width: 50%;
-    justify-self: center;
+    grid-column: 2 / span 2;
   }
 }
+/* --- */
