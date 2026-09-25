@@ -23,5 +23,5 @@ let tipAmount = mealCost * (tipPercentage / 100);
 let totalCost = mealCost + tipAmount;
 
 console.log("Price: " + mealCost.toFixed(2) + "€");
-console.log("Tip (" + tipPercentage + "%): " + tipAmount.toFixed(2) + "€");
+console.log("Tip: " + tipAmount.toFixed(2) + "€");
 console.log("Overall Cost: ", totalCost, "€");
