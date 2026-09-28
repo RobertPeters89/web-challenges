@@ -1,6 +1,6 @@
 console.clear();
 
-const operand1 = 12;
+let operand1 = 12;
 const operand2 = 4;
 
 // ----- Mathematical Operations -----
@@ -10,11 +10,11 @@ const operand2 = 4;
 // --v-- write your code here --v--
 
 const addButton = document.querySelector('[data-js="add"]');
-const subtractButton = document.querySelector('[data-js="subtract]');
-const multiplyButton = document.querySelector('[data-js="multiply]');
-const divideButton = document.querySelector('[data-js="divide]');
-const exponentButton = document.querySelector('[data-js="exponent]');
-const moduloButton = document.querySelector('[data-js="modulo]');
+const subtractButton = document.querySelector('[data-js="subtract"]');
+const multiplyButton = document.querySelector('[data-js="multiply"]');
+const divideButton = document.querySelector('[data-js="divide"]');
+const exponentButton = document.querySelector('[data-js="exponent"]');
+const moduloButton = document.querySelector('[data-js="modulo"]');
 
 // --^-- write your code here --^--
 
@@ -80,7 +80,7 @@ const increaseByOneButton = document.querySelector(
 );
 
 const increaseByFiveButton = document.querySelector(
-  '[data.js="increase-by-five"]',
+  '[data-js="increase-by-five"]',
 );
 
 const decreaseByOneButton = document.querySelector(
@@ -88,7 +88,7 @@ const decreaseByOneButton = document.querySelector(
 );
 
 const decreaseByFiveButton = document.querySelector(
-  '[data-js="decrease-by-five]',
+  '[data-js="decrease-by-five"]',
 );
 
 const multiplyByTwoButton = document.querySelector(
