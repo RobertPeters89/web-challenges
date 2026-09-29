@@ -12,7 +12,7 @@ uppercaseButton.addEventListener("click", () => {
 });
 
 lowercaseButton.addEventListener("click", () => {
-  firstInput.value = firstInput.value.toUpperCase();
+  firstInput.value = firstInput.value.toLowerCase();
   secondInput.value = secondInput.value.toLowerCase();
 });
 
