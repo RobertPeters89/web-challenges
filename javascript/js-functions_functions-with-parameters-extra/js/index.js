@@ -40,4 +40,4 @@ function printRectangleArea(width, length) {
   console.log("The area of the rectangle is " + width * length);
 }
 printRectangleArea(5, 7);
-// printRectangleArea(3, 4);
+printRectangleArea(3, 4);

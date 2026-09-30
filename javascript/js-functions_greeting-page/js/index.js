@@ -23,7 +23,7 @@ Update the content and style of the page based on the current day and time.
 const display = document.querySelector('[data-js="display"]');
 
 function getGreeting() {
-  // Code here
+  const hour = new Date().getHours();
 }
 
 function getDayColor() {
