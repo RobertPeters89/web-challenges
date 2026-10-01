@@ -29,10 +29,10 @@ postButton.type = "button";
 postButton.classList.add("post__button");
 postButton.textContent = "♥ Like";
 
-postButton.addEventListener("click", handleLikeButtonClick);
-
-postFooter.append(postUsername, postButton);
+document.body.append(newPost);
 
 newPost.append(postContent, postFooter);
 
-document.body.append(newPost);
+postFooter.append(postUsername, postButton);
+
+postButton.addEventListener("click", handleLikeButtonClick);
