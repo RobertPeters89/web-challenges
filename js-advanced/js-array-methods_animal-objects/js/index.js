@@ -134,13 +134,26 @@ const animalWithWeightMoreThanFivehundredExists = animals.some(
 console.log(animalWithWeightMoreThanFivehundredExists);
 
 // Hint: Filter for Europe first, then check every animal for its weight.
-const allAnimalsInEuropeWeighLessThanOnehundred = null;
+const allAnimalsInEuropeWeighLessThanOnehundred = animals.every(
+  (animal) => animal.continents.includes("Europe") && animal.weight < 100,
+);
+
+console.log(allAnimalsInEuropeWeighLessThanOnehundred);
 
 // Hint: filter + map + reduce
-const weightOfAllAnimalsInAfrica = null;
+const weightOfAllAnimalsInAfrica = animals
+  .filter((animal) => animal.continents.includes("Africa"))
+  .map((animal) => animal.weight)
+  .reduce((a, b) => a + b, 0);
+
+console.log(weightOfAllAnimalsInAfrica);
 
 // Hint: As above, but divided by the number of animals in Africa.
-const averageWeightOfAllAnimalsInAfrica = null;
+const averageWeightOfAllAnimalsInAfrica =
+  weightOfAllAnimalsInAfrica /
+  animals.filter((animal) => animal.continents.includes("Africa")).length;
+
+console.log(averageWeightOfAllAnimalsInAfrica);
 
 export {
   firstAnimalStartingWithLetterG,
