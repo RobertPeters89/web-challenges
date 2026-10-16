@@ -22,14 +22,13 @@ export default function StatusCheck() {
      **/
     // --v-- write your code here --v--
     try {
-      statusIcon("⏳");
+      setStatusIcon("⏳");
       const response = await fetch(apiStatusUrl);
       const icon = response.ok ? "✅" : "❌";
       setStatusIcon(icon);
     } catch {
       setStatusIcon("🚨");
     }
-
     // --^-- write your code here --^--
   }
 
