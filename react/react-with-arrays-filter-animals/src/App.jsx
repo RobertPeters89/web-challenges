@@ -31,9 +31,8 @@ const animals = [
 const habitats = ["Mountains", "Ocean", "Forest", "Domestic Animal"];
 
 export default function App() {
-  //Task 1
   const [chooseHabitats, setChooseHabitats] = useState("");
-  //Task 3
+
   const filterAnimals = animals.filter(
     (animal) => animal.habitat === chooseHabitats,
   );
