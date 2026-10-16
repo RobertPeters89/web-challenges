@@ -21,7 +21,7 @@ export default function PokemonList() {
   }, [offsetUrl]);
 
   if (!pokemon) return null;
-  console.log(pokemon);
+
   return (
     <main>
       <button
