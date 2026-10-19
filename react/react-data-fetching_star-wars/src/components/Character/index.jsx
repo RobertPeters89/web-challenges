@@ -28,7 +28,7 @@ export default function Character({ id }) {
       name={data.name}
       height={data.height}
       eyeColor={data.eye_color}
-      birthYear={data.birtch_year}
+      birthYear={data.birth_year}
     />
   );
 }
