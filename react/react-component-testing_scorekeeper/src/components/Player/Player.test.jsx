@@ -23,30 +23,27 @@ test("renders player information and two buttons", () => {
 });
 
 test("calls callbacks when increasing or decreasing score", async () => {
-  const handleDecreaseMock = vi.fn();
-  const handleIncreaseMock = vi.fn();
+  const handleDecreasePlayerScore = vi.fn();
+  const handleIncreasePlayerScore = vi.fn();
+
+  const user = userEvent.setup();
 
   render(
     <Player
-      name="John"
-      score="5"
-      onDecreasePlayerScore={handleDecreaseMock}
-      onIncreasePlayerScore={handleIncreaseMock}
+      onDecreasePlayerScore={handleDecreasePlayerScore}
+      onIncreasePlayerScore={handleIncreasePlayerScore}
     />,
   );
 
-  const decreaseButton = screen.getByRole("button", {
-    name: /decrease score/i,
-  });
-  const increaseButton = screen.getByRole("button", {
-    name: /increase score/i,
-  });
+  const decreaseButton = screen.getByRole("button", { name: "Decrease Score" });
 
-  await userEvent.click(decreaseButton);
-  expect(handleDecreaseMock).toHaveBeenCalledTimes(1);
-  expect(handleIncreaseMock).not.toHaveBeenCalled();
+  expect(handleDecreasePlayerScore).toHaveBeenCalledTimes(0);
+  await user.click(decreaseButton);
+  expect(handleDecreasePlayerScore).toHaveBeenCalledTimes(1);
 
-  await userEvent.click(increaseButton);
-  expect(handleIncreaseMock).toHaveBeenCalledTimes(1);
-  expect(handleDecreaseMock).toHaveBeenCalledTimes(1);
+  const increaseButton = screen.getByRole("button", { name: "Increase Score" });
+
+  expect(handleIncreasePlayerScore).toHaveBeenCalledTimes(0);
+  await user.click(increaseButton);
+  expect(handleIncreasePlayerScore).toHaveBeenCalledTimes(1);
 });

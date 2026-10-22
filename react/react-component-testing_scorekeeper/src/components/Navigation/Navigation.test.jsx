@@ -4,7 +4,7 @@ import Navigation from ".";
 import { expect } from "vitest";
 
 test("renders with two buttons 'Play' and 'History'", () => {
-  render(<Navigation view="play" onChangeView={() => {}} />);
+  render(<Navigation view="play" />);
 
   const playButton = screen.getByRole("button", { name: "Play" });
   const historyButton = screen.getByRole("button", { name: "History" });
@@ -15,17 +15,12 @@ test("renders with two buttons 'Play' and 'History'", () => {
 
 test("calls the callback with the name of the view when a button is clicked", async () => {
   const handleChangeViewMock = vi.fn();
+  const user = userEvent.setup();
 
   render(<Navigation view="play" onChangeView={handleChangeViewMock} />);
 
-  const playButton = screen.getByRole("button", { name: "Play" });
   const historyButton = screen.getByRole("button", { name: "History" });
+  await user.click(historyButton);
 
-  await userEvent.click(historyButton);
   expect(handleChangeViewMock).toHaveBeenCalledWith("history");
-
-  await userEvent.click(playButton);
-  expect(handleChangeViewMock).toHaveBeenCalled("play");
-
-  expect(handleChangeViewMock).toHaveBeenCalled("2");
 });

@@ -4,41 +4,44 @@ import Input from ".";
 import { expect } from "vitest";
 
 test("renders a label and an input with the correct attributes", () => {
+  const handleChange = vi.fn();
+
   render(
     <Input
-      labelText="Player name"
-      placeholder="Enter a name"
-      name="playername"
-      value=""
-      onChange={() => {}}
+      labelText="Name"
+      name="name-input"
+      placeholder="Name of player"
+      value="Bernd"
+      onChange={handleChange}
       required
     />,
   );
 
-  const label = screen.getByText("Player name");
-  const input = screen.getByLabelText("Player name");
+  const input = screen.getByLabelText("Name");
 
-  expect(label).toBeInTheDocument();
   expect(input).toBeInTheDocument();
-  expect(input).toHaveAttribute("placeholder", "Enter a name");
-  expect(input).toHaveAttribute("name", "playername");
+
+  expect(input).toHaveAttribute("placeholder", "Name of player");
+  expect(input).toHaveAttribute("type", "text");
+  expect(input).toHaveAttribute("name", "name-input");
+  expect(input).toHaveAttribute("id", "name-input");
+  expect(input).toHaveAttribute("value", "Bernd");
   expect(input).toBeRequired();
 });
 
 test("calls callback on every user input", async () => {
-  const handleChangeMock = vi.fn();
-  render(
-    <Input
-      labelText="Player name"
-      placeholder="Enter a name"
-      name="playername"
-      value=""
-      onChange={handleChangeMock}
-    />,
-  );
+  const handleChange = vi.fn();
+  const user = userEvent.setup();
 
-  const input = screen.getByLabelText("Player name");
-  await userEvent.type(input, "John");
+  render(<Input labelText="Name" name="name.input" onChange={handleChange} />);
 
-  expect(handleChangeMock).toHaveBeenCalledTimes(4);
+  const input = screen.getByLabelText("Name");
+
+  expect(input).toBeInTheDocument();
+
+  expect(handleChange).toHaveBeenCalledTimes(0);
+
+  await user.type(input, "Bernd");
+
+  expect(handleChange).toHaveBeenCalledTimes(5);
 });
