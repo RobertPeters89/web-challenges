@@ -6,9 +6,9 @@ import { expect } from "vitest";
 test("renders two input fields and a button", () => {
   render(<GameForm onCreateGame={() => {}} />);
 
-  const nameOfGameInput = screen.getByLabelText(/name of game/i);
-  const playerNameInput = screen.getByLabelText(/player names/i);
-  const button = screen.getByRole("button", { name: /create game/i });
+  const nameOfGameInput = screen.getByLabelText("name of game");
+  const playerNameInput = screen.getByLabelText("player names");
+  const button = screen.getByRole("button", { name: "create game" });
 
   expect(nameOfGameInput).toBeInTheDocument();
   expect(playerNameInput).toBeInTheDocument();
@@ -18,7 +18,7 @@ test("renders two input fields and a button", () => {
 test("renders a form with the accessible name 'Create a new game'", () => {
   render(<GameForm onCreateGame={() => {}} />);
 
-  const form = screen.getByRole("form", { name: /create a new game/i });
+  const form = screen.getByRole("form", { name: "create a new game" });
 
   expect(form).toBeInTheDocument();
 });
@@ -47,8 +47,8 @@ test("does not submit form if one input field is left empty", async () => {
   const handleCreateGameMock = vi.fn();
   render(<GameForm onCreateGame={handleCreateGameMock} />);
 
-  const nameOfGameInput = screen.getByLabelText(/name of game/i);
-  const button = screen.getByRole("button", { name: /create game/i });
+  const nameOfGameInput = screen.getByLabelText("name of game");
+  const button = screen.getByRole("button", { name: "create game" });
 
   await userEvent.type(nameOfGameInput, "Dodelido");
   await userEvent.click(button);
