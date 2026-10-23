@@ -21,3 +21,4 @@ let level = 1;
 level = "high";
 
 let level: number = 1;
+level = 2;
