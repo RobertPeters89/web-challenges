@@ -97,17 +97,49 @@ describe("startCountdown", () => {
 
   test("does not call onDone before the countdown is over", () => {
     // TODO
+    const onDone = vi.fn();
+    startCountdown(3, vi.fn(), onDone);
+
+    vi.advanceTimersByTime(2999);
+
+    expect(onDone).not.toHaveBeenCalled();
   });
 
   test("calls onDone when the countdown reaches 0", () => {
     // TODO
+    const onDone = vi.fn();
+    startCountdown(3, vi.fn(), onDone);
+
+    vi.advanceTimersByTime(3000);
+
+    expect(onDone).toHaveBeenCalled(2);
   });
 
   test("stops ticking after the returned cancel function was called", () => {
     // TODO
+    const onTick = vi.fn();
+    const onDone = vi.fn();
+    const cancel = vi.fn();
+
+    vi.advanceTimersByTime(1000);
+    cancel();
+    vi.advanceTimersByTime(5000);
+
+    expect(onTick).toHaveBeenCalledTimes(1);
+    expect(onDone).not.toHaveBeenCalled();
   });
 
   test("calls onDone right away for a countdown of 0 seconds", () => {
     // TODO: what happens in the current implementation? Is that what you expect?
+    const onTick = vi.fn();
+    const onDone = vi.fn();
+
+    startCountdown(0, onTick, onDone);
+
+    expect(onDone).toHaveBeenCalledTimes(1);
+
+    vi.advanceTimersByTime(5000);
+
+    expect(onTick).not.toHaveBeenCalled();
   });
 });
