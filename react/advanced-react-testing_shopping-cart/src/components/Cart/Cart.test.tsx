@@ -80,8 +80,18 @@ test("updates the total when a quantity changes", async () => {
 
 test("removes an item when its CartItem calls onRemove", async () => {
   // The item disappears and the total is 25.00 € afterwards.
+  const user = userEvent.setup();
+  render(<Cart initialItems={initialItems} />);
+  await user.click(
+    screen.getByRole("button", { name: "remove Coffee Grinder" }),
+  );
+  expect(screen.queryByText("Coffee Grinder")).not.toBeInTheDocument();
+  expect(screen.getByText("Total: 25.00 €")).toBeInTheDocument();
 });
 
 test("shows a message and no ShippingEstimate when the cart is empty", () => {
   // Hint: a mocked component that was never called was never rendered.
+  render(<Cart initialItems={[]} />);
+  expect(screen.getByText("Your cart is empty.")).toBeInTheDocument();
+  expect(ShippingEstimate).not.toHaveBeenCalled();
 });
