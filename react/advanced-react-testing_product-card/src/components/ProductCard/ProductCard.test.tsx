@@ -40,12 +40,12 @@ test("shows the discounted price", () => {
   render(
     <ProductCard
       name="Espresso Machine"
-      price={80}
+      price={400}
       discount={25}
       addedAt="2026-01-10"
     />,
   );
-  expect(screen.getByText("60.00 €")).toBeInTheDocument();
+  expect(screen.getByText("300.00 €")).toBeInTheDocument();
   expect(screen.getByText("Sale -25%")).toBeInTheDocument();
 });
 
@@ -54,7 +54,7 @@ test("matches the inline snapshot of a product on sale", () => {
   const { asFragment } = render(
     <ProductCard
       name="Espresso Machine"
-      price={80}
+      price={400}
       discount={25}
       addedAt="2026-01-10"
     />,
@@ -74,11 +74,11 @@ test("matches the inline snapshot of a product on sale", () => {
         </span>
         <p>
           <s>
-            80.00 €
+            400.00 €
           </s>
            
           <strong>
-            60.00 €
+            300.00 €
           </strong>
         </p>
       </article>
