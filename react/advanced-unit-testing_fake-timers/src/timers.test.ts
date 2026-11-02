@@ -112,7 +112,7 @@ describe("startCountdown", () => {
 
     vi.advanceTimersByTime(3000);
 
-    expect(onDone).toHaveBeenCalled(2);
+    expect(onDone).toHaveBeenCalledTimes(2);
   });
 
   test("stops ticking after the returned cancel function was called", () => {
