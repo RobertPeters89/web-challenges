@@ -15,7 +15,7 @@ describe("validatePassword", () => {
 
   test("accepts a password with exactly 8 characters", () => {
     // TODO: boundary case, use the password "Abcdef12"
-    expect(validatePassword("Abcdef123")).toEqual([]);
+    expect(validatePassword("Abcdef12")).toEqual([]);
   });
 
   test("reports a password without a digit", () => {
